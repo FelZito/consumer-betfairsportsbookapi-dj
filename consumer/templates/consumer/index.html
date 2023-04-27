@@ -1,0 +1,41 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+<!--Main layout-->
+<main class="my-5">
+    <div class="container">
+        <!--Section: Content-->
+        <section class="text-center">
+
+            <div class="row">
+                {% for indice, jogo in jogos.items %}
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ jogo.team1.name }} {{ jogo.team1.score }} x  {{ jogo.team2.score }} {{ jogo.team2.name }}</h5>
+                            <p class="card-text">{{ jogo.competition_name }}</p>
+                            {% if jogo.live_time == None %}
+                            <p>O jogo ainda não começou</p>
+                            {% else %}
+                            <p>{{ jogo.live_time }}</p>
+                            {% endif %}
+                            
+                            <p class="card-text">{{ jogo.odds.1 }} | {{ jogo.odds.X }} | {{ jogo.odds.2 }}    </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>        
+    </div>
+</main>
+
+<!--Main layout-->
+
+
+{% endblock content %}
